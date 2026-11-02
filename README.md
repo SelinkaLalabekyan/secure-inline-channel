@@ -271,3 +271,29 @@ or runtime logs.
 This is an academic Linux prototype, not a replacement for standardized VPN or
 IPsec software. Its constraints and production-hardening gaps are documented
 explicitly in [docs/SECURITY.md](docs/SECURITY.md).
+
+## Configuration from a clean clone
+
+Copy the example configurations:
+
+    cp configs/device1.conf.example configs/device1.conf
+    cp configs/device2.conf.example configs/device2.conf
+
+The example configurations contain an all-zero demonstration PSK.
+Replace it with the same securely generated 256-bit PSK on both devices.
+Never use the placeholder for real communication.
+
+Local device configuration files are excluded from Git.
+
+## Validation performed
+
+Test environment: Ubuntu Server 24.04 ARM64.
+
+- C compilation: passed
+- Unit tests: 12 passed, 0 failures
+- Network integration checks: 3 passed
+- Bidirectional protected TCP communication: verified
+- Plaintext marker absent from inter-device capture: verified
+
+These results demonstrate the prototype in a controlled Linux
+environment and do not establish production-grade security.
